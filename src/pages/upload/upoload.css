@@ -1,0 +1,10 @@
+.upload {
+  background-image: url("https://dezinebrainz.com/images/instagram.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+  width: 100%;
+}
+.upload {
+  background-color: rgba(255, 255, 255, 0.548);
+}

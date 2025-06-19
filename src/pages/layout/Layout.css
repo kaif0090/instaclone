@@ -1,0 +1,95 @@
+.layout-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout-sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+
+.layout-content {
+  height: 100vh;
+  overflow-y: auto;
+
+  background-color: #f8f9fa; /* light gray background */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.Navlinks {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+}
+.Navlinks:hover {
+  background-color: rgb(238, 237, 237);
+  outline: 1px solid #e0dede;
+  border-radius: 5px;
+}
+.p {
+  justify-content: center;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.signup {
+  position: absolute;
+  margin-top: -100vh;
+  background-color: rgba(218, 19, 19, 0.034);
+}
+
+@media only screen and (max-width: 650px) {
+  .layout-sidebar {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .layout-sidebar{
+    display: none;
+  }
+  .outlet{
+    width: 100%;
+  }
+  .layout-bottum{
+    display: block;
+    height: 60px; 
+    position: fixed;
+    bottom: -1px;
+  }
+}
+.layout-bottum {
+  display: grid; /* ✅ Switch to CSS Grid */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* ✅ Responsive columns */
+  align-items: center;
+  justify-items: center;
+  height: 60px;
+  background-color: white;
+  border-top: 1px solid black;
+  z-index: 1000;
+  padding: 0 10px;
+  gap: 10px;
+  width: 100%;
+  /* ✅ Optional spacing between items */
+}
+
+/* ✅ Hide layout-bottum for medium and large screens */
+@media only screen and (min-width: 651px) {
+  .layout-bottum {
+    display: none;
+  }
+}
+
+.Navlinksss{
+  margin-left:0 ;
+}
+.laynav{
+ display: flex;
+ flex-wrap: wrap;
+ gap: 5vw;
+  align-items: center;
+  justify-items: center;
+}

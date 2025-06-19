@@ -1,0 +1,81 @@
+.post-container {
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.post {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.post-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.post-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  outline: 1px solid #ccc;
+  
+}
+.suggested-user{   
+    display: flex;
+    margin: 0px;
+    justify-content: space-around;
+    background-color: white;
+align-items: center;
+}
+
+.scroll{
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.scroll::-webkit-scrollbar {
+  height: 1px;
+  width: 1px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: rgb(173, 171, 171);
+width: 1px;
+}
+.bg{
+    background-color: white;
+}
+
+
+@media only screen and (max-width: 650px) {
+.home-side{
+display: none;
+}
+}
+
+
+
+@media only screen and (max-width: 1500px) and (min-width: 651px) {
+  .home-side{
+display: block;
+  }
+}

@@ -1,0 +1,15 @@
+#signupmain{
+    background-image: linear-gradient(to right top, #ee0a3c, #f30049, #f70055, #fa0062, #fd006f, #fe1c6c, #ff2b69, #ff3666, #ff4f55, #ff6546, #fb7a3a, #f48e31);
+
+    height: 100vh;
+
+
+    }
+
+.formbox{
+
+background-color: rgba(245, 245, 245, 0.575);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+box-shadow: 5px 5px 10px  rgba(214, 211, 211, 0.527);
+}

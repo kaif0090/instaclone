@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
-import "./layout.css";
+import "./Layout.css";
 
 import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";

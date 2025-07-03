@@ -37,10 +37,14 @@ export default function Signup() {
       formData.append("password", form.password);
       formData.append("img", file); // image file
 
-      const res = await axios.post("http://localhost:3033/api/signup", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-        withCredentials: true, // if using cookies
-      });
+      const res = await axios.post(
+        "https://instabackend-2-fqzi.onrender.com/api/signup",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+          withCredentials: true, // if using cookies
+        }
+      );
 
       if (res.data.user) {
         console.log("✅ Signup successful");
@@ -107,11 +111,12 @@ export default function Signup() {
                 Profile Image
               </label>
               <input
-              type="file"
+                type="file"
                 name="img"
                 placeholder="Image URL"
                 value={form.img}
-               accept="image/*" onChange={handleFileChange}
+                accept="image/*"
+                onChange={handleFileChange}
                 className="form-control"
               />
             </div>

@@ -5,7 +5,7 @@ export default function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3033/api/profile", { withCredentials: true })
+    axios.get("https://instabackend-2-fqzi.onrender.com/api/profile", { withCredentials: true })
       .then(res => setUser(res.data))
       .catch(() => window.location.href = "/login");
   }, []);

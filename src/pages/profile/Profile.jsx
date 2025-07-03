@@ -9,17 +9,26 @@ export default function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3033/api/profile", { withCredentials: true })
-      .then((res) => setUser(res.data))
-      .catch(() => (window.location.href = "/"));
-  }, []);
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get(
+          "https://instabackend-2-fqzi.onrender.com/api/profile",
+          {
+            withCredentials: true, // 👈 must be present
+          }
+        );
+        setUser(res.data);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
 
-  if (!user) return <p>Loading profile...</p>;
+    fetchUser();
+  }, []);
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:3033/api/logout", {
+      await axios.get("https://instabackend-2-fqzi.onrender.com/api/logout", {
         withCredentials: true,
       });
       navigate("/");
@@ -28,67 +37,61 @@ export default function Profile() {
     }
   };
 
+  if (!user) return <p className="text-center mt-5">Loading profile...</p>;
+
   return (
     <>
-      <div className="container mt-3">
-        <div className="d-flex justify-content-end mb-3">
+      <div className="container mt-4">
+        <div className="d-flex justify-content-end">
           <button className="btn btn-danger" onClick={handleLogout}>
             Logout
           </button>
         </div>
 
-        <div className="row align-items-center text-center text-xl-start d-flex">
-          <div className="col-12 col-xl-3 mb-3 mb-xl-0">
+        <div className="row align-items-center text-center text-xl-start mt-4">
+          <div className="col-12 col-xl-3 mb-3 mb-xl-0 d-flex justify-content-center">
             <img
               src={user.img || "https://via.placeholder.com/150"}
               alt="profile"
-              className="rounded-circle"
-              style={{
-                height: "150px",
-                width: "150px",
-                objectFit: "cover",
-              }}
+              className="rounded-circle shadow"
+              style={{ height: "150px", width: "150px", objectFit: "cover" }}
             />
           </div>
 
           <div className="col-12 col-xl-9">
-            <h1>{user.name}</h1>
-            <p>{user.email}</p>
+            <h2>{user.name}</h2>
+            <p className="text-muted">{user.email}</p>
 
-            <div className="d-flex justify-content-center justify-content-xl-start gap-4 my-3">
-              <span>
-                Post <br /> 2
-              </span>
-              <span>
-                Follower <br /> 45
-              </span>
-              <span>
-                Following <br /> 60
-              </span>
+            <div className="d-flex justify-content-center justify-content-xl-start gap-5 my-3">
+              <div>
+                <strong>2</strong> <br /> Posts
+              </div>
+              <div>
+                <strong>45</strong> <br /> Followers
+              </div>
+              <div>
+                <strong>60</strong> <br /> Following
+              </div>
             </div>
 
-            <div className="d-flex justify-content-center justify-content-xl-start">
-              <button className="btn btn-outline-dark">Edit Profile</button>
-            </div>
+            <button className="btn btn-outline-dark">Edit Profile</button>
           </div>
         </div>
       </div>
 
-      <hr />
+      <hr className="my-5" />
 
       <div className="container text-center">
-        <div className="row">
-          <div className="col-12 d-flex justify-content-around flex-wrap mb-5">
-            <h5>Posts</h5>
-            <h5>Reels</h5>
-            <h5>Saved</h5>
-          </div>
+        <div className="d-flex justify-content-around flex-wrap mb-4">
+          <h5>Posts</h5>
+          <h5>Reels</h5>
+          <h5>Saved</h5>
+        </div>
 
-          <div className="d-flex justify-content-center mt-5">
-            <div>
-              <MdOutlineFlipCameraIos size={100} />
-              <h1>No Posts</h1>
-            </div>
+        <div className="d-flex justify-content-center mt-5">
+          <div className="text-center">
+            <MdOutlineFlipCameraIos size={100} className="text-secondary" />
+            <h3>No Posts</h3>
           </div>
         </div>
       </div>

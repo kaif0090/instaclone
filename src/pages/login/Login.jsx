@@ -11,9 +11,9 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3033/api/login", form, {
+      await axios.post("https://instabackend-2-fqzi.onrender.com/api/login", form, {
         withCredentials: true,
-      });
+      }); 
 
       window.location.href = "/Layout/";
     } catch (err) {

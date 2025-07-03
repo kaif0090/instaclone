@@ -173,8 +173,6 @@ export default function Home() {
               </div>
             </div>
 
-
-
             <div className="col-xl-3 p-3 bg home-side">
               <h5>Suggested for you</h5>
               {users.map((element, index) => (

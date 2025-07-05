@@ -48,7 +48,7 @@ export default function Signup() {
 
       if (res.data.user) {
         console.log("✅ Signup successful");
-        navigate("/Layout"); // redirect after signup
+        navigate("/layout"); // redirect after signup
       } else {
         alert("❌ Signup failed: No user returned");
       }

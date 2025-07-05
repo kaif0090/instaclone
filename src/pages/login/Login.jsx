@@ -17,7 +17,7 @@ export default function Login() {
         withCredentials: true,
       }); 
 
-      navigate("/Layout/");
+      navigate("/layout");
     } catch (err) {
       console.log(err.response?.data?.message || "Login failed");
       navigate ("/signup");

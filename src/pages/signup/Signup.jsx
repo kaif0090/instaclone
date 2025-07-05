@@ -36,7 +36,7 @@ export default function Signup() {
       formData.append("email", form.email);
       formData.append("password", form.password);
       formData.append("img", file); // image file
-
+ 
       const res = await axios.post(
         "https://instabackend-2-fqzi.onrender.com/api/signup",
         formData,

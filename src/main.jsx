@@ -1,8 +1,9 @@
 import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Layout from "./pages/layout/Layout";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
@@ -15,16 +16,22 @@ import Message from "./pages/message/Message";
 import Signup from "./pages/signup/Signup";
 import App from "./pages/app/App";
 
+import PrivateRoute from "./components/PrivateRoute";
+
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
-  { path: "Signup", element: <Signup /> },
-  {
-    path: "Layout",
-    element: <Layout />, // Main layout (Navbar, Sidebar etc.)
-    children: [
-      { index: true, element: <Home /> }, 
-      { path: "App", element: <App /> },
+  { path: "/signup", element: <Signup /> },
 
+  {
+    path: "/layout",
+    element: (
+      <PrivateRoute>
+        <Layout />
+      </PrivateRoute>
+    ),
+    children: [
+      { index: true, element: <Home /> },
+      { path: "app", element: <App /> },
       { path: "about", element: <About /> },
       { path: "reel", element: <Reel /> },
       { path: "upload", element: <Upload /> },

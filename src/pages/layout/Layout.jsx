@@ -56,15 +56,15 @@ export default function Layout() {
         <div className="col-xl-12   p-4 layout-bottum col-md-12 col-lg-12 col-sm-12">
           <nav className="laynav">
             <NavLink to="/layout/" className="Navlinksss">
-              <FaHome style={{}}  size={30}/>
+              <FaHome style={{}} size={30} />
             </NavLink>
 
             <NavLink to="/layout/about" className="Navlinksss">
-              <FaSearch size={30}/>
+              <FaSearch size={30} />
             </NavLink>
 
             <NavLink to="/layout/upload" className="Navlinksss">
-              <FiUpload style={{}}  size={30}/>
+              <FiUpload style={{}} size={30} />
             </NavLink>
 
             <NavLink to="/layout/reel" className="Navlinksss">
@@ -72,15 +72,15 @@ export default function Layout() {
             </NavLink>
 
             <NavLink to="/Layout/notification" className="Navlinksss">
-              <IoIosHeart style={{}}size={30} />
+              <IoIosHeart style={{}} size={30} />
             </NavLink>
 
             <NavLink to="/Layout/message" className="Navlinksss">
-              <BiSolidMessageRoundedCheck size={30}/>
+              <BiSolidMessageRoundedCheck size={30} />
             </NavLink>
 
             <NavLink to="/layout/profile" className="Navlinksss">
-              <FaUser style={{}} size={30}/>
+              <FaUser style={{}} size={30} />
             </NavLink>
           </nav>
         </div>

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import "./login.css"
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
@@ -15,10 +17,10 @@ export default function Login() {
         withCredentials: true,
       }); 
 
-      window.location.href = "/Layout/";
+      navigate("/Layout/");
     } catch (err) {
       console.log(err.response?.data?.message || "Login failed");
-      window.location.href = "/signup";
+      navigate ("/signup");
     }
   };
 

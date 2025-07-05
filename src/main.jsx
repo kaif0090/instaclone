@@ -16,7 +16,7 @@ import Message from "./pages/message/Message";
 import Signup from "./pages/signup/Signup";
 import App from "./pages/app/App";
 
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./pages/protected/protectedrout";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },

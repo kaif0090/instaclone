@@ -7,7 +7,7 @@ export default function Reel() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    axios.get("https://instabackend-2-fqzi.onrender.com/Reels").then((res) => {
+    axios.get("https://instabackend-1-pla6.onrender.com/api/reels").then((res) => {
       setVideos(res.data);
     });
   }, []);

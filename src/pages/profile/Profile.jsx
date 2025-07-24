@@ -12,7 +12,7 @@ export default function Profile() {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          "https://instabackend-2-fqzi.onrender.com/api/profile",
+          "https://instabackend-1-pla6.onrender.com/api/profile",
           {
             withCredentials: true, // 👈 must be present
           }
@@ -28,9 +28,13 @@ export default function Profile() {
 
   const handleLogout = async () => {
     try {
-      await axios.get("https://instabackend-2-fqzi.onrender.com/api/logout", {
-        withCredentials: true,
-      });
+      const ress = await axios.get(
+        "https://instabackend-1-pla6.onrender.com/api/profile",
+        {
+          withCredentials: true, // ✅ must be set to send cookies
+        }
+      );
+      console.log(ress.data);
       navigate("/");
     } catch (err) {
       console.error("Logout failed", err);

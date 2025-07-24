@@ -38,7 +38,7 @@ export default function Signup() {
       formData.append("img", file); // image file
  
       const res = await axios.post(
-        "https://instabackend-2-fqzi.onrender.com/api/signup",
+        "https://instabackend-1-pla6.onrender.com/api/signup",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

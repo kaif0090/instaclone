@@ -13,7 +13,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://instabackend-2-fqzi.onrender.com/api/login", form, {
+      await axios.post("https://instabackend-1-pla6.onrender.com/api/login", form, {
         withCredentials: true,
       }); 
 

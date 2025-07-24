@@ -1,9 +1,10 @@
-// src/components/PrivateRoute.jsx
-import React from "react";
+// pages/protected/PrivateRoute.jsx
 import { Navigate } from "react-router-dom";
 
-export default function PrivateRoute({ children }) {
-  const isAuthenticated = localStorage.getItem("token"); // or use a context
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = document.cookie.includes("token");
 
-  return isAuthenticated ? children : <Navigate to="/" replace />;
-}
+  return isAuthenticated ? children : <Navigate to="/" />;
+};
+
+export default PrivateRoute;

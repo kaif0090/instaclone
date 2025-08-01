@@ -26,7 +26,7 @@ export default function Upload() {
     e.preventDefault();
     try {
       // ❌ BUG: There was a space in the URL (" http://...") that breaks the request
-      const res = await axios.post("https://instabackend-1-pla6.onrender.com/Reels", data);
+      const res = await axios.post("https://instabackend-1-81at.onrender.com/Reels", data);
       console.log(res.data);
       setData({
         file:"",

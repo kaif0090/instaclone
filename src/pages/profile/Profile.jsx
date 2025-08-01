@@ -12,7 +12,7 @@ export default function Profile() {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          "https://instabackend-1-pla6.onrender.com/api/profile",
+          "https://instabackend-1-81at.onrender.com/api/profile",
           {
             withCredentials: true, // 👈 must be present
           }
@@ -29,7 +29,7 @@ export default function Profile() {
   const handleLogout = async () => {
     try {
       const ress = await axios.get(
-        "https://instabackend-1-pla6.onrender.com/api/profile",
+        "https://instabackend-1-81at.onrender.com/api/profile",
         {
           withCredentials: true, // ✅ must be set to send cookies
         }

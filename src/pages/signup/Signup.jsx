@@ -11,9 +11,10 @@ export default function Signup() {
     email: "",
     password: "",
   });
-  const [file, setFile] = useState(null); // image file
 
-  // Handle input changes
+  const [file, setFile] = useState(null); // Profile image
+
+  // Handle text inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({
@@ -22,117 +23,116 @@ export default function Signup() {
     }));
   };
 
-  // Handle image selection
+  // Handle file input
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
-  // ✅ Final Combined Submit Function
+  // Submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const formData = new FormData();
       formData.append("name", form.name);
       formData.append("email", form.email);
       formData.append("password", form.password);
-      formData.append("img", file); // image file
- 
+      if (file) {
+        formData.append("img", file); // Only append if file is selected
+      }
+
       const res = await axios.post(
         "https://instabackend-1-81at.onrender.com/api/signup",
-        formData,
+        form,
         {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true, // if using cookies
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
         }
       );
 
       if (res.data.user) {
         console.log("✅ Signup successful");
-        navigate("/layout"); // redirect after signup
+        navigate("/layout");
       } else {
-        alert("❌ Signup failed: No user returned");
+        alert("❌ Signup failed: User not created");
       }
     } catch (err) {
       console.error("❌ Signup error:", err);
-      alert("Signup failed");
+      alert(err?.response?.data?.message || "Signup failed. Try again.");
     }
   };
+
   return (
-    <>
-      <div id="signupmain" className="p-5">
-        <h1 className="text-center text-light">Sign Up</h1>
-        <div className="container mb-5">
-          <form
-            onSubmit={handleSubmit}
-            className="d-flex flex-column gap-4 formbox p-3 mt-3 rounded-3 mb-5"
-          >
-            <div>
-              <label htmlFor="name" className="form-label">
-                Name
-              </label>
-              <input
-                name="name"
-                placeholder="Name"
-                className="form-control"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                name="email"
-                type="email"
-                placeholder="Enter Your Email"
-                className="form-control"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                name="password"
-                type="password"
-                placeholder="Enter Password"
-                value={form.password}
-                className="form-control"
-                onChange={handleChange}
-                required
-              />
-            </div>
+    <div id="signupmain" className="p-5">
+      <h1 className="text-center text-light">Sign Up</h1>
+      <div className="container mb-5">
+        <form
+          onSubmit={handleSubmit}
+          className="d-flex flex-column gap-4 formbox p-3 mt-3 rounded-3 mb-5"
+        >
+          <div>
+            <label htmlFor="name" className="form-label">Name</label>
+            <input
+              name="name"
+              placeholder="Name"
+              className="form-control"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-            <div className="c">
-              <label htmlFor="img" className="form-label">
-                Profile Image
-              </label>
-              <input
-                type="file"
-                name="img"
-                placeholder="Image URL"
-                value={form.img}
-                accept="image/*"
-                onChange={handleFileChange}
-                className="form-control"
-              />
-            </div>
+          <div>
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter Your Email"
+              className="form-control"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-            <div>
-              <button
-                type="submit"
-                className="btn "
-                style={{ backgroundColor: "#ff0080", color: "white" }}
-              >
-                Sign Up
-              </button>
-            </div>
-          </form>
-        </div>
+          <div>
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="Enter Password"
+              className="form-control"
+              value={form.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="img" className="form-label">Profile Image</label>
+            <input
+              type="file"
+              name="img"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="form-control"
+              required // optional: remove if image is not mandatory
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="btn"
+              style={{ backgroundColor: "#ff0080", color: "white" }}
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
